@@ -10,6 +10,11 @@ worker::worker(QObject* parent, QStringList* data, QSemaphore* sema, int positio
 
 worker::~worker()
 {
+
+}
+
+void worker::run()
+{
 	if (!data || !sema) {
 		qInfo() << "Missing pointers!";
 		return;
@@ -22,9 +27,4 @@ worker::~worker()
 	sema->release();
 
 	qInfo() << t << " Finished" << position;
-}
-
-void worker::run()
-{
-
 }
